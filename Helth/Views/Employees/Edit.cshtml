@@ -1,0 +1,28 @@
+@model Helth.ViewModels.EmployeeFormViewModel
+@using Helth.Models.Enums
+@{
+    ViewData["Title"] = "تعديل بيانات الموظف";
+    ViewData["Mode"] = EmployeeFormMode.Edit;
+}
+
+<form asp-controller="Employees" asp-action="Edit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+    <partial name="_EmployeeForm" model="Model" view-data="ViewData" />
+
+    <div class="actions-bar">
+        <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">إلغاء</a>
+        <button type="submit" form="deleteEmployeeForm" class="btn btn-danger">حذف</button>
+    </div>
+</form>
+
+<form id="deleteEmployeeForm" asp-action="Delete" asp-route-id="@Model.Id" method="post" onsubmit="return confirm('هل أنت متأكد من حذف هذا الموظف؟');">
+    @Html.AntiForgeryToken()
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

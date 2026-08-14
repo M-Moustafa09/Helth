@@ -1,0 +1,9 @@
+@model Helth.ViewModels.EmployeeFormViewModel
+@using Helth.Models.Enums
+@{
+    ViewData["Title"] = "شهادة صحية";
+    ViewData["Mode"] = EmployeeFormMode.ReadOnly;
+    Layout = "_PublicLayout";
+}
+
+<partial name="_EmployeeForm" model="Model" view-data="ViewData" />

@@ -1,0 +1,33 @@
+@model Helth.ViewModels.EmployeeSearchViewModel
+@{
+    ViewData["Title"] = "لوحة التحكم";
+}
+
+<h1 class="certificate-title">الموظفون</h1>
+
+<div class="dashboard-toolbar">
+    <form asp-action="Index" method="get" class="search-form">
+        <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control" placeholder="ابحث بالاسم أو رقم الهوية" />
+        <button type="submit" class="btn btn-outline">بحث</button>
+    </form>
+    <a asp-action="Create" class="btn btn-primary">إضافة موظف</a>
+</div>
+
+@if (!Model.Employees.Any())
+{
+    <div class="empty-state">لا يوجد موظفون مطابقون</div>
+}
+else
+{
+    <div class="employee-grid">
+        @foreach (var employee in Model.Employees)
+        {
+            var photoUrl = string.IsNullOrEmpty(employee.PhotoPath) ? Url.Content("~/images/photo-placeholder.svg") : employee.PhotoPath;
+            <div class="employee-card">
+                <img src="@photoUrl" alt="@employee.FullName" />
+                <div class="employee-name">@employee.FullName</div>
+                <a asp-action="Details" asp-route-id="@employee.Id" class="btn btn-outline">عرض</a>
+            </div>
+        }
+    </div>
+}

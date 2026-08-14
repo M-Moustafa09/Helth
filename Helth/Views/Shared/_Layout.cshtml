@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - نظام الشهادات الصحية</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header class="app-header">
+        <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="القائمة" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <a asp-controller="Employees" asp-action="Index" class="app-logo">
+            <img src="~/images/logo-placeholder.svg" alt="الشعار" />
+        </a>
+    </header>
+
+    <nav class="side-menu" id="sideMenu">
+        <ul>
+            <li><a asp-controller="Employees" asp-action="Index">لوحة التحكم</a></li>
+            <li>
+                <form asp-controller="Account" asp-action="Logout" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="link-button">تسجيل الخروج</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <div class="side-menu-overlay" id="sideMenuOverlay"></div>
+
+    <main class="app-main">
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

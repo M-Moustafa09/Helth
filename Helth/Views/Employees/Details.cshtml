@@ -1,0 +1,14 @@
+@model Helth.ViewModels.EmployeeFormViewModel
+@using Helth.Models.Enums
+@{
+    ViewData["Title"] = "بيانات الموظف";
+    ViewData["Mode"] = EmployeeFormMode.ReadOnly;
+}
+
+<partial name="_EmployeeForm" model="Model" view-data="ViewData" />
+
+<div class="actions-bar">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">تعديل</a>
+    <a asp-action="Share" asp-route-id="@Model.Id" class="btn btn-outline">مشاركة</a>
+    <a asp-action="Index" class="btn btn-secondary">رجوع للوحة التحكم</a>
+</div>

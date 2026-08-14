@@ -1,0 +1,331 @@
+@font-face {
+    font-family: 'Noto Sans Arabic';
+    src: url('/fonts/NotoSansArabic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans Arabic';
+    src: url('/fonts/NotoSansArabic-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #000000;
+    font-family: 'Noto Sans Arabic', Tahoma, Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ---------- Admin header ---------- */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #ffffff;
+}
+
+.app-logo img {
+    height: 40px;
+    display: block;
+}
+
+.hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 34px;
+    height: 34px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-btn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #2e7d32;
+    border-radius: 2px;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+    transition: right 0.25s ease;
+    padding-top: 70px;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+.side-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.side-menu li {
+    border-bottom: 1px solid #eee;
+}
+
+.side-menu li a,
+.side-menu .link-button {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    text-align: right;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    color: #000;
+}
+
+.side-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
+}
+
+.side-menu-overlay.open {
+    display: block;
+}
+
+.app-main {
+    padding: 16px 20px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ---------- Auth ---------- */
+.auth-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+.auth-card {
+    background: #fff;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 360px;
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.auth-form .form-group {
+    margin-bottom: 16px;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* ---------- Forms / buttons ---------- */
+.form-group {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-weight: 700;
+}
+
+.form-control {
+    padding: 9px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.field-validation {
+    color: #c62828;
+    font-size: 13px;
+}
+
+.validation-summary {
+    color: #c62828;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.validation-summary ul {
+    margin: 0;
+    padding-inline-start: 18px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 6px;
+    border: none;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #2e7d32;
+    color: #fff;
+}
+
+.btn-secondary {
+    background: #757575;
+    color: #fff;
+}
+
+.btn-danger {
+    background: #c62828;
+    color: #fff;
+}
+
+.btn-outline {
+    background: #fff;
+    color: #2e7d32;
+    border: 1px solid #2e7d32;
+}
+
+.actions-bar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+/* ---------- Employee certificate form ---------- */
+.certificate-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0 16px;
+}
+
+.employee-photo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.employee-photo-wrap img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #2e7d32;
+}
+
+.employee-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+}
+
+@media (max-width: 600px) {
+    .employee-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field-view label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.field-view .field-value {
+    font-weight: 400;
+    min-height: 20px;
+}
+
+/* ---------- Dashboard ---------- */
+.dashboard-toolbar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+    min-width: 220px;
+}
+
+.search-form input {
+    flex: 1;
+}
+
+.employee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.employee-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+}
+
+.employee-card img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #2e7d32;
+    margin-bottom: 10px;
+}
+
+.employee-card .employee-name {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.empty-state {
+    text-align: center;
+    color: #757575;
+    padding: 40px 0;
+}

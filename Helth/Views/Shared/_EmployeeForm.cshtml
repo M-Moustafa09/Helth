@@ -1,0 +1,218 @@
+@model Helth.ViewModels.EmployeeFormViewModel
+@using Helth.Models.Enums
+@{
+    var mode = (EmployeeFormMode)(ViewData["Mode"] ?? EmployeeFormMode.ReadOnly);
+    var isReadOnly = mode == EmployeeFormMode.ReadOnly;
+    var photoUrl = string.IsNullOrEmpty(Model.PhotoPath) ? Url.Content("~/images/photo-placeholder.svg") : Model.PhotoPath;
+}
+
+<h1 class="certificate-title">شهادة صحية للأنشطة التجارية</h1>
+
+<div class="employee-photo-wrap">
+    <img src="@photoUrl" alt="صورة الموظف" />
+</div>
+
+@if (!isReadOnly)
+{
+    <div class="form-group photo-upload-group">
+        <label asp-for="PhotoFile"></label>
+        <input asp-for="PhotoFile" type="file" accept="image/*" class="form-control" />
+    </div>
+}
+
+<div class="employee-form-grid">
+    <div class="field-view">
+        <label asp-for="Municipality"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.Municipality</div>
+        }
+        else
+        {
+            <input asp-for="Municipality" class="form-control" />
+            <span asp-validation-for="Municipality" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="SubMunicipality"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.SubMunicipality</div>
+        }
+        else
+        {
+            <input asp-for="SubMunicipality" class="form-control" />
+            <span asp-validation-for="SubMunicipality" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="FullName"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.FullName</div>
+        }
+        else
+        {
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="NationalId"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.NationalId</div>
+        }
+        else
+        {
+            <input asp-for="NationalId" class="form-control" />
+            <span asp-validation-for="NationalId" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="Gender"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@(Model.Gender == Gender.Male ? "ذكر" : "أنثى")</div>
+        }
+        else
+        {
+            <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+            <span asp-validation-for="Gender" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="Nationality"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.Nationality</div>
+        }
+        else
+        {
+            <input asp-for="Nationality" class="form-control" />
+            <span asp-validation-for="Nationality" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="HealthCertificateNumber"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.HealthCertificateNumber</div>
+        }
+        else
+        {
+            <input asp-for="HealthCertificateNumber" class="form-control" />
+            <span asp-validation-for="HealthCertificateNumber" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="Profession"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.Profession</div>
+        }
+        else
+        {
+            <input asp-for="Profession" class="form-control" />
+            <span asp-validation-for="Profession" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="IssueDateHijri"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.IssueDateHijri</div>
+        }
+        else
+        {
+            <input asp-for="IssueDateHijri" class="form-control" placeholder="مثال: 1448/02/01" />
+            <span asp-validation-for="IssueDateHijri" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="IssueDateGregorian"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.IssueDateGregorian.ToString("yyyy-MM-dd")</div>
+        }
+        else
+        {
+            <input asp-for="IssueDateGregorian" type="date" class="form-control" />
+            <span asp-validation-for="IssueDateGregorian" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="TrainingProgramType"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.TrainingProgramType</div>
+        }
+        else
+        {
+            <input asp-for="TrainingProgramType" class="form-control" />
+            <span asp-validation-for="TrainingProgramType" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="TrainingProgramExpiryDate"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.TrainingProgramExpiryDate.ToString("yyyy-MM-dd")</div>
+        }
+        else
+        {
+            <input asp-for="TrainingProgramExpiryDate" type="date" class="form-control" />
+            <span asp-validation-for="TrainingProgramExpiryDate" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="LicenseNumber"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.LicenseNumber</div>
+        }
+        else
+        {
+            <input asp-for="LicenseNumber" class="form-control" />
+            <span asp-validation-for="LicenseNumber" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="FacilityName"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.FacilityName</div>
+        }
+        else
+        {
+            <input asp-for="FacilityName" class="form-control" />
+            <span asp-validation-for="FacilityName" class="field-validation"></span>
+        }
+    </div>
+
+    <div class="field-view">
+        <label asp-for="FacilityNumber"></label>
+        @if (isReadOnly)
+        {
+            <div class="field-value">@Model.FacilityNumber</div>
+        }
+        else
+        {
+            <input asp-for="FacilityNumber" class="form-control" />
+            <span asp-validation-for="FacilityNumber" class="field-validation"></span>
+        }
+    </div>
+</div>

@@ -1,0 +1,22 @@
+@model Helth.ViewModels.EmployeeFormViewModel
+@using Helth.Models.Enums
+@{
+    ViewData["Title"] = "إضافة موظف";
+    ViewData["Mode"] = EmployeeFormMode.Create;
+}
+
+<form asp-controller="Employees" asp-action="Create" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+    <partial name="_EmployeeForm" model="Model" view-data="ViewData" />
+
+    <div class="actions-bar">
+        <button type="submit" class="btn btn-primary">حفظ</button>
+        <a asp-action="Index" class="btn btn-secondary">إلغاء</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
